@@ -1,12 +1,11 @@
-
 uniform bool GLOW_active = true;
-uniform vec4 glow_color : source_color;
+uniform vec4 glow_color : source_color = vec4(1.0);
 uniform float glow_power: hint_range(0.0, 100.0, .1) = 2.0;
 uniform float glow_shift: hint_range(0.0, 10.0, 0.1) = 1.0;
 uniform float glow_radius: hint_range(1.0, 50.0, 1.0) = 1.0;
 
 
-void glow(in vec2 uv, in sampler2D tex, in vec2 size, vec2 pix_size, inout vec4 color) {
+void glow(in vec2 uv, in sampler2D tex, in vec2 pix_size, inout vec4 color) {
 	vec4 glow = vec4(0.0);
 	float count = 0.0;
 	for (float x = -glow_radius; x <= glow_radius; x += 1.0) {
@@ -19,7 +18,3 @@ void glow(in vec2 uv, in sampler2D tex, in vec2 size, vec2 pix_size, inout vec4 
 	glow *= glow_power / count;
 	color = mix(texture(tex, uv), glow, glow.a) ;
 }
-//void fragment(){
-//
-    //glow(UV,TEXTURE,TEXTURE_PIXEL_SIZE,COLOR);
-//}
