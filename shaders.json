@@ -1,4 +1,25 @@
 [
+
+	{
+		"name": "electricity",
+		"group": "Fx",
+		"description": "This causes an electric outline around the sprite",
+		"author": "spheras",
+		"link": "-",
+		"adaptedBy": "moostafa-afk",
+		"license": "MIT",
+		"version": "1.0",
+		"filename": "electictriciy.gdshader",
+		"activation": "GLOW_active",
+		"function": "glow",
+		"parameters": [
+			{
+				"name": "Too many paramaters ",
+				"description": "Just scroll down to materials"
+			},
+		]
+	},
+	
 	{
 		"name": "Glow",
 		"group": "Fx",
