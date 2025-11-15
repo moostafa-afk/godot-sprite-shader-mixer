@@ -1,6 +1,4 @@
 [
-
-
 	{
 		"name": "Glow",
 		"group": "Fx",
@@ -10,7 +8,7 @@
 		"adaptedBy": "moostafa-afk",
 		"license": "MIT",
 		"version": "1.0",
-		"filename": "my_glow.gdshader",
+		"filename": "glow.gdshader",
 		"activation": "GLOW_active",
 		"function": "glow",
 		"parameters": [
