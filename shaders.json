@@ -9,11 +9,11 @@
 		"adaptedBy": "moostafa-afk",
 		"license": "MIT",
 		"version": "1.0",
-		"filename": "electictriciy.gdshader",
-		"activation": "GLOW_active",
-		"function": "glow",
+		"filename": "electricity.gdshader",
+		"activation": "electricity_active",
+		"function": "electricity",
 		"parameters": [
-			{
+			{  
 				"name": "Too many paramaters ",
 				"description": "Just scroll down to materials"
 			},
