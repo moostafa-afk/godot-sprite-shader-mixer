@@ -9,7 +9,7 @@
 		"license": "MIT",
 		"version": "1.0",
 		"filename": "pixel_dissolve_animated.gdshader",
-		"activation": "PIXELDISOLVEANI",
+		"activation": "PIXELDISOLVEANI_active",
 		"function": "pixelDisolveAni",
 		"parameters": [
 			{  
