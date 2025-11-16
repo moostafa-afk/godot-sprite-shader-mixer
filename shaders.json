@@ -1,4 +1,23 @@
 [
+	{
+		"name": "pixel_dissolve_animated",
+		"group": "disolve",
+		"description": "animates dissolve",
+		"author": "spheras",
+		"link": "-",
+		"adaptedBy": "moostafa-afk",
+		"license": "MIT",
+		"version": "1.0",
+		"filename": "pixel_dissolve_animated.gdshader",
+		"activation": "PIXELDISOLVEANI",
+		"function": "pixelDisolveAni",
+		"parameters": [
+			{  
+				"name": "Too many paramaters ",
+				"description": "Just scroll down to materials"
+			},
+		]
+	},
 
 	{
 		"name": "electricity",
