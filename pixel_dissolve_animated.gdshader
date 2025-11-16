@@ -1,10 +1,9 @@
-
+uniform bool PIXELDISOLVEANI_active=true;
 uniform float dissolve_speed :hint_range(1.,5.) = 2.;
 uniform float min_value :hint_range(0,1) = .5;
 uniform float max_value :hint_range(0,1) = .7;
 
 	
-uniform bool PIXELDISOLVEANI_active=true;
 uniform float PIXELDISOLVE_time:hint_range(0.0, 1.57, 0.001) = 1.0;
 uniform vec2 PIXELDISOLVE_custom_resolution = vec2(100,100);
 
