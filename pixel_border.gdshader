@@ -1,15 +1,31 @@
-
 	
-uniform bool BORDERNOISE_active = true;
+uniform bool PIXELBORDER_active = true;
 uniform float BORDERNOISE_max_line_width:hint_range(0.0, 50.0, 0.1) = 10.0;
 uniform float BORDERNOISE_min_line_width:hint_range(0.0, 1000.0, 0.1) = 88.0;
 uniform float BORDERNOISE_freq:hint_range(0.0, 12.0, 0.1) = 1.0;
 uniform float BORDERNOISE_block_size:hint_range(0.0, 100.0, 0.1) = 20.0;
 uniform vec4 BORDERNOISE_starting_colour : source_color= vec4(0,0,0,1);
 uniform vec4 BORDERNOISE_ending_colour: source_color = vec4(1,0,0,1);
+uniform bool PIXELDISOLVEANI_active=true;
+uniform float dissolve_speed :hint_range(1.,5.) = 2.;
+uniform float min_value :hint_range(0,1) = .5;
+uniform float max_value :hint_range(0,1) = .7;
+
+	
+uniform float PIXELDISOLVE_time:hint_range(0.0, 1.57, 0.001) = 1.0;
+uniform vec2 PIXELDISOLVE_custom_resolution = vec2(100,100);
+
 const float BORDERNOISE_pi = 3.1415;
 const int BORDERNOISE_ang_res = 16;
 const int BORDERNOISE_grad_res = 8;
+
+float PIXELDISOLVE_rand(vec2 co){
+    return fract(sin(dot(co.xy ,vec2(12.9898,96.233))) * 43758.5453);
+}
+
+float sin_range(float x) {
+    return min_value + (sin(x) * 0.5 + 0.5) * (max_value - min_value);
+}
 float BORDERNOISE_hash(vec2 p, float s) {
 	return fract(35.1 * sin(dot(vec3(112.3, 459.2, 753.2), vec3(p, s))));
 }
@@ -59,7 +75,7 @@ float BORDERNOISE_getClosestDistance(sampler2D text, vec2 uv, vec2 maxDist) {
 	return hi;
 	
 }
-void borderNoise(in vec2 uv, in sampler2D txt, vec2 size, vec2 pixelSize, inout vec4 color){
+void pixel_border(in vec2 uv, in sampler2D txt, vec2 size, vec2 pixelSize, inout vec4 color){
 	float timeStep = floor(BORDERNOISE_freq * TIME);
 	vec2 scaledDist = pixelSize;
 	scaledDist *= BORDERNOISE_getLineWidth(uv / pixelSize, timeStep);
@@ -67,30 +83,11 @@ void borderNoise(in vec2 uv, in sampler2D txt, vec2 size, vec2 pixelSize, inout 
 	
 	if (( w > 0.0) && (texture(txt, uv).a < 0.2)) {
 		color = mix(BORDERNOISE_starting_colour, BORDERNOISE_ending_colour, tanh(3.0*w));
-	}
-}
-uniform bool PIXELDISOLVEANI_active=true;
-uniform float dissolve_speed :hint_range(1.,5.) = 2.;
-uniform float min_value :hint_range(0,1) = .5;
-uniform float max_value :hint_range(0,1) = .7;
-
-	
-uniform float PIXELDISOLVE_time:hint_range(0.0, 1.57, 0.001) = 1.0;
-uniform vec2 PIXELDISOLVE_custom_resolution = vec2(100,100);
-
-
-float PIXELDISOLVE_rand(vec2 co){
-    return fract(sin(dot(co.xy ,vec2(12.9898,96.233))) * 43758.5453);
-}
-
-float sin_range(float x) {
-    return min_value + (sin(x) * 0.5 + 0.5) * (max_value - min_value);
-}
-
-void pixelDisolveAni(in vec2 uv, in sampler2D sampler, vec2 size, vec2 pixelSize, inout vec4 color){
-    if (texture(sampler,uv).a == 0. && color.a > 0. ){
+        
+    if (texture(txt,uv).a == 0. && color.a > 0. ){
        	vec2 within_texture_pixel = vec2(floor(uv * PIXELDISOLVE_custom_resolution));
        	if(sin(sin_range(TIME * dissolve_speed))  <= PIXELDISOLVE_rand(within_texture_pixel))
       		color = vec4(0.0,0.0,0.0,0.0);
 }
+	}
 }
