@@ -1,5 +1,22 @@
 [
 	{
+		"name": "PixelBorder",
+		"group": "disolve",
+		"description": "animates dissolve within a border",
+		"author": "spheras",
+		"link": "-",
+		"adaptedBy": "moostafa-afk",
+		"license": "MIT",
+		"version": "1.0",
+		"filename": "pixel_border.gdshader",
+		"activation": "PIXELBORDER_active",
+		"function": "pixel_border",
+		"parameters": [
+			{  
+				"name": "Too many paramaters ",
+				"description": "Just scroll down to materials"
+			},
+	{
 		"name": "PixelAnim",
 		"group": "disolve",
 		"description": "animates dissolve",
