@@ -15,7 +15,11 @@
 			{  
 				"name": "Too many paramaters ",
 				"description": "Just scroll down to materials"
-			},
+              
+			}
+        ]
+    },
+        
 	{
 		"name": "PixelAnim",
 		"group": "disolve",
@@ -32,7 +36,7 @@
 			{  
 				"name": "Too many paramaters ",
 				"description": "Just scroll down to materials"
-			},
+			}
 		]
 	},
 
@@ -52,7 +56,7 @@
 			{  
 				"name": "Too many paramaters ",
 				"description": "Just scroll down to materials"
-			},
+			}
 		]
 	},
 	
