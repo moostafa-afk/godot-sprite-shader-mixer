@@ -20,7 +20,7 @@ float min_max_sin(float x){
     return float (min_offset +(sin(x) + 1.0) * 0.5 * (max_offset - min_offset));
 }
 
-void lightning(in vec2 uv, in sampler2D sampler,in vec2 texSize, vec2 pixelSize, inout vec4 color){
+void lightningx(in vec2 uv, in sampler2D sampler,in vec2 texSize, vec2 pixelSize, inout vec4 color){
     const int max_const = 11;
     float bolt[max_const];
     float wave[max_const];
