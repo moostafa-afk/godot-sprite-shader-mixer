@@ -4,7 +4,7 @@ uniform float min_value :hint_range(0,1) = .5;
 uniform float max_value :hint_range(0,1) = .7;
 uniform float PIXELDISOLVE_time:hint_range(0.0, 1.57, 0.001) = 1.0;
 uniform vec2 PIXELDISOLVE_custom_resolution = vec2(100,100);
-uniform bool  OUTLINE_active  = true;
+uniform bool  PIXEL_OUTLINE_active = true;
 uniform float OUTLINE_thickness : hint_range(0, 30) = 20.0;
 uniform vec4  OUTLINE_color : source_color = vec4(1,0,0,1);
 
