@@ -1,4 +1,3 @@
-shader_type canvas_item;
 
 
 uniform bool LIGHTNINGX_active=true;
