@@ -1,4 +1,26 @@
 [
+
+	
+	{
+		"name": "LightningX",
+		"group": "fx",
+		"description": "Animates multiple lightning bolts",
+		"author": "spheras",
+		"link": "-",
+		"adaptedBy": "moostafa-afk",
+		"license": "MIT",
+		"version": "1.0",
+		"filename": "lightningx.gdshader",
+		"activation": "LIGHTNINGX_active",
+		"function": "lightningx",
+		"parameters": [
+			{  
+				"name": "Too many paramaters ",
+				"description": "Just scroll down to materials"
+              
+			}
+        ]
+    },
 	{
 		"name": "PixelBorder",
 		"group": "disolve",
