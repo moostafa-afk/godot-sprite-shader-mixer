@@ -16,7 +16,7 @@ float sin_range(float x) {
     return min_value + (sin(x) * 0.5 + 0.5) * (max_value - min_value);
 }
 
-void outline(in vec2 uv, in sampler2D tex, in vec2 spriteSize, in vec2 pixelSize, inout vec4 color) {
+void pixel_outline(in vec2 uv, in sampler2D tex, in vec2 spriteSize, in vec2 pixelSize, inout vec4 color) {
     vec2 size = vec2(OUTLINE_thickness) / spriteSize;
 
     float alpha = color.a;
