@@ -1,5 +1,4 @@
 
-uniform float opacity:hint_range(0.0, 1.0, 0.01)=1.;
 uniform float dissolve_speed :hint_range(1.,10.) = 5.;
 uniform float min_value :hint_range(0,1) = .2;
 uniform float max_value :hint_range(0,1) = 1.;
