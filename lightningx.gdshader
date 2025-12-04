@@ -1,14 +1,12 @@
-
-
 uniform bool LIGHTNINGX_active=true;
-uniform float min_offset :hint_range(0.,1.) = 1;
-uniform float max_offset :hint_range(0.,2.) = 2;
-uniform int count : hint_range(1, 10) = 1;
+uniform float min_offset :hint_range(-1.,1.) = -1.;
+uniform float max_offset :hint_range(-1.,1.) = 1.;
+uniform int count : hint_range(1, 15) = 1;
 uniform vec4 LIGHTNING_lightningColor: source_color=vec4(1,1,1,1);
-uniform float LIGHTNING_size: hint_range (0.,.1)=0.01;
-uniform float LIGHTNING_width: hint_range (0.,.1)=.05;
+uniform float LIGHTNING_size: hint_range (0.,.4)=0.01;
+uniform float LIGHTNING_width: hint_range (0.,.9)=.05;
 uniform float LIGHTNING_speed:hint_range(0.0, 15.0, 0.1)=4;
-uniform float LIGHTNING_frequency:hint_range(0.0, 50.0, 0.1)=20.;
+uniform float LIGHTNING_frequency:hint_range(0.0, 100.0, 0.1)=20.;
 uniform float LIGHTNING_flash:hint_range(0.0, 15.0, 0.1)=15.0;
 uniform float LIGHTNING_time_shift:hint_range(0.0, 15.0, 0.1)=15;
 
