@@ -12,7 +12,7 @@ void glow(in vec2 uv, in sampler2D tex, in vec2 size, in vec2 pix_size, inout ve
 		for (float y = -glow_radius; y <= glow_radius; y += 1.0) {
 			vec2 offset = vec2(x, y) * glow_shift * pix_size;
 			glow += texture(tex, uv + offset) * glow_color;
-			glow)count += 1.0;
+			glow_count += 1.0;
 		}
 	}
 	glow *= glow_power / glow_count;
