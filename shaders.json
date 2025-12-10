@@ -1,21 +1,20 @@
 [
 	{
 		"name": "Squash",
-		"group": "disolve",
+		"group": "distort",
 		"description": "squashes and stretches the animation",
 		"author": "Garmelon ",
-		"link": "-",
+		"link": "(https://github.com/Garmelon)",
 		"adaptedBy": "moostafa-afk",
 		"license": "MIT",
 		"version": "1.0",
-		"filename": "pixel_outline.gdshader",
-		"activation": "PIXEL_OUTLINE_active",
-		"function": "pixel_outline",
+		"filename": "squash.gdshader",
+		"activation": "squash_active",
+		"function": "squash_func",
 		"parameters": [
 			{  
 				"name": "Too many paramaters ",
 				"description": "Just scroll down to materials"
-              
 			}
         ]
     },
