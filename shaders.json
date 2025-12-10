@@ -1,5 +1,24 @@
 [
-
+	{
+		"name": "Squash",
+		"group": "disolve",
+		"description": "squashes and stretches the animation",
+		"author": "Garmelon ",
+		"link": "-",
+		"adaptedBy": "moostafa-afk",
+		"license": "MIT",
+		"version": "1.0",
+		"filename": "pixel_outline.gdshader",
+		"activation": "PIXEL_OUTLINE_active",
+		"function": "pixel_outline",
+		"parameters": [
+			{  
+				"name": "Too many paramaters ",
+				"description": "Just scroll down to materials"
+              
+			}
+        ]
+    },
 	{
 		"name": "Pixel Outline",
 		"group": "disolve",
@@ -80,26 +99,7 @@
 			}
 		]
 	},
-
-	{
-		"name": "electricity",
-		"group": "Fx",
-		"description": "This causes an electric outline around the sprite",
-		"author": "spheras",
-		"link": "-",
-		"adaptedBy": "moostafa-afk",
-		"license": "MIT",
-		"version": "1.0",
-		"filename": "electricity.gdshader",
-		"activation": "electricity_active",
-		"function": "electricity",
-		"parameters": [
-			{  
-				"name": "Too many paramaters ",
-				"description": "Just scroll down to materials"
-			}
-		]
-	},
+	
 	
 	{
 		"name": "Glow",
