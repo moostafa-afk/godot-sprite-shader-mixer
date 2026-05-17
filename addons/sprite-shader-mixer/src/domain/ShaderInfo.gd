@@ -2,6 +2,8 @@ class_name ShaderInfo
 extends Object
 
 const SHADERS_BASE_PATH="res://addons/sprite-shader-mixer/assets/shaders/"
+const SHADERS_LOCAL_BASE_PATH="res://addons/sprite-shader-mixer/assets/shaders/local/"
+
 const EMPTY_SHADER_FILE_PATH="res://addons/sprite-shader-mixer/assets/shaders/empty.gdshader"
 const EMPTY_SHADER_VARIABLE_SHADERS="%SHADERS%"
 const EMPTY_SHADER_VARIABLE_FUNCTIONS="//%FUNCTIONS%"
@@ -11,6 +13,8 @@ const SHADERS_COMMENT="//SHADERS:"
 
 var name:String #name of the shader
 var group:String #group of the shader
+var isLocal:bool #shader is from shaders/local
+var basePath:String #base path of the shader
 var description:String #description of the shader
 var author:String #original author of the shader
 var adaptedBy:String #who mades the adaptation to the plugin
@@ -38,6 +42,11 @@ func loadShaderInfo(shaderInfoJsonObject:Dictionary):
 	self.link=shaderInfoJsonObject.link
 	self.adaptedBy=shaderInfoJsonObject.adaptedBy
 	self.license=shaderInfoJsonObject.license
+	self.basePath = SHADERS_BASE_PATH
+	self.isLocal = false
+	if self.group == "local":
+		self.isLocal = true
+		self.basePath = SHADERS_LOCAL_BASE_PATH
 	
 	self.function=shaderInfoJsonObject.function
 	if(shaderInfoJsonObject.has("customCall")):
@@ -56,20 +65,22 @@ func loadShaderInfo(shaderInfoJsonObject:Dictionary):
 		if(shaderInfoJsonObject.vertexCallCode.length()>0):
 			self.vertexCallCode=shaderInfoJsonObject.vertexCallCode
 
-# delete this shader phisically and the textures associated
+# delete this shader phisically and the textures associated - only if it isn't local
 func delete():
+	if self.isLocal:
+		return
 	if(shaderHasBeenDownloaded(self)):
 		#delete the gdshader script
-		Util.deleteFile(SHADERS_BASE_PATH+self.filename)
+		Util.deleteFile(self.basePath+self.filename)
 		#delete if necessary the texture images
 		for param in self.parameters:
 			if(param.texture!=null && param.texture.length()>0):
-				var texturePath=SHADERS_BASE_PATH+param.texture
+				var texturePath=self.basePath+param.texture
 				Util.deleteFile(texturePath)
 		
 		#delete if neccesary the vertex code
 		if(vertex && self.vertexCallCode):
-			var vertexPath=SHADERS_BASE_PATH+self.vertexCallCode
+			var vertexPath=self.basePath+self.vertexCallCode
 			Util.deleteFile(vertexPath)
 		
 		OS.alert("Shader Removed, you can download again if necessary. See you!")
@@ -122,7 +133,7 @@ static func _replaceScriptVariables(shaders:String, functions:String, calls:Stri
 #  shader -> the shader to check
 #  return -> true if the shader has been downloaded, false otherwise
 static func shaderHasBeenDownloaded(shader:ShaderInfo)->bool:
-	return FileAccess.file_exists(SHADERS_BASE_PATH+shader.filename)
+	return FileAccess.file_exists(shader.basePath+shader.filename)
 
 # static function to generate a shader code based on the selected shaders to incorporate.
 #   selectedShaders -> a list of selected shaders to generate the shader code
@@ -131,7 +142,7 @@ static func generateShaderCode(selectedShaders:Array[ShaderInfo])->Shader:
 	var functionsCode:String=""
 	for selectedShader in selectedShaders:
 		#fragment functions
-		var contentOfSelectedShader=Util.readFile(SHADERS_BASE_PATH+selectedShader.filename)
+		var contentOfSelectedShader=Util.readFile(selectedShader.basePath+selectedShader.filename)
 		functionsCode=functionsCode+"\n"+contentOfSelectedShader
 				
 	var shadersCode=""
@@ -148,7 +159,7 @@ static func generateShaderCode(selectedShaders:Array[ShaderInfo])->Shader:
 	var vertexCode=""
 	for selectedShader in selectedShaders:
 		if(selectedShader.vertex && selectedShader.vertexCallCode!=null  && selectedShader.vertexCallCode.length()>0):
-			var vertexCodeOfSelectedShader=Util.readFile(SHADERS_BASE_PATH+selectedShader.vertexCallCode)
+			var vertexCodeOfSelectedShader=Util.readFile(selectedShader.basePath+selectedShader.vertexCallCode)
 			vertexCode=vertexCode+"\n"+vertexCodeOfSelectedShader
 	
 
@@ -156,5 +167,3 @@ static func generateShaderCode(selectedShaders:Array[ShaderInfo])->Shader:
 	var shader=Shader.new()
 	shader.code=shaderCode
 	return shader
-
-

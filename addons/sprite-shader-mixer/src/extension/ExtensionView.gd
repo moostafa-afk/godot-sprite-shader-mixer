@@ -26,6 +26,7 @@ func _ready()->void:
 	#connecting UI events
 	self.compButtonCreate.pressed.connect(self.logic.onCreatePressed)
 	self.compOptionShaders.item_selected.connect(self._onShaderComboSelected)
+	self.compOptionShaders.button_down.connect(self._onShaderListOpened)
 	self.compButtonAddShader.pressed.connect(self._onAddButtonPressed)
 	self.compCurrentShadersTitle.toggled.connect(self._onShadersButtonToogled)
 	self.compButtonDownload.pressed.connect(self._onDownloadPressed)
@@ -75,6 +76,9 @@ func _onShaderComboSelected(selectedShaderIndex:int)->void:
 	if(selectedShaderIndex>=0):
 		var selectedShaderName=self.compOptionShaders.get_item_text(selectedShaderIndex)
 		self.logic.shaderSelected(selectedShaderName)
+
+func _onShaderListOpened()->void:
+	self.logic.onSyncLocalShaderList()
 
 func _onSyncShaderList()->void:
 	var oldText=self.compButtonSync.text
