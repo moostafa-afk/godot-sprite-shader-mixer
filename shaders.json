@@ -1,4 +1,29 @@
+
+
 [
+	
+	{
+		"name": "Electric_Line",
+		"group": "fx",
+		"description": "Makes an electric line",
+		"author": "Lenrow",
+		"link": "https://godotshaders.com/shader/2d-lightning-beam/",
+		"adaptedBy": "moostafa-afk",
+		"license": "MIT",
+		"version": "1.0",
+		"filename": "final_electric.gdshader",
+		"activation": "Electric_active",
+		"function": "electric_line",
+		"parameters": [
+			{  
+				"name": "Too many paramaters ",
+				"description": "Just scroll down to materials"
+              
+			}
+        ]
+    },
+	
+	
 	{
 		"name": "Squash",
 		"group": "distort",
