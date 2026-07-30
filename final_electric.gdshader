@@ -1,4 +1,4 @@
-
+uniform bool Electric_active = true;	
 group_uniforms noise_uniforms;
 uniform sampler2D lightning_noise : repeat_enable;
 uniform sampler2D background_noise : repeat_enable;
